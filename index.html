@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Horario Pro JC - Versión Final Estable</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="container">
+            <section id="view-setup">
+                <header class="header-main">
+                    <h2>Gestión de Cursos</h2>
+                    <div class="header-btns">
+                        <button class="btn-action btn-gray" onclick="exportData()">📤 Exportar .txt</button>
+                        <button class="btn-action btn-gray" onclick="document.getElementById('importFile').click()">📥 Importar .txt</button>
+                        <input type="file" id="importFile" style="display:none" accept=".txt" onchange="importData(event)">
+                        <button class="btn-action btn-red" onclick="eliminarTodo()">🗑️ Eliminar Todo</button>
+                        <button class="btn-action btn-green" onclick="openModal()">+ Nuevo Curso</button>
+                        <button class="btn-action btn-blue" onclick="showSchedule()">Ver mi Horario →</button>
+                    </div>
+                </header>
+                <div class="lista-cursos-grid" id="listaCursos"></div>
+            </section>
+
+            <section id="view-schedule" style="display: none;">
+                <header class="header-schedule-nav">
+                    <div class="nav-left">
+                        <button class="btn-nav-left" onclick="showSetup()">← Editar Cursos</button>
+                    </div>
+                    <div class="nav-right">
+                        <button class="btn-excel" onclick="downloadExcel()">📊 Excel</button>
+                        <button class="btn-download-png" onclick="downloadImage()">🖼️ Descargar PNG</button>
+                    </div>
+                </header>
+                <div id="capture-area" class="schedule-paper">
+                    <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Horario Académico Personalizado</h2>
+                    <table id="horarioTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 120px;">Periodo / Hora</th>
+                                <th>Lun</th><th>Mar</th><th>Mie</th><th>Jue</th><th>Vie</th><th>Sab</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="modalCurso" class="modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h3>Configurar Curso</h3>
+                <button id="btnDeleteCourse" class="btn-danger-modal" onclick="confirmarEliminarCurso()">🗑️ Eliminar</button>
+            </header>
+            <input type="hidden" id="editIndex">
+            <div class="modal-scroll-area">
+                <div class="modal-body">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                        <label>Nombre del Curso:</label>
+                        <input type="text" id="courseName" style="flex: 1;">
+                        <label>Color:</label>
+                        <input type="color" id="courseColor" value="#007bff">
+                    </div>
+                    <hr>
+                    <div class="groups-title-row">
+                        <h4>Grupos</h4>
+                        <button class="btn-small" onclick="addNewGroupSection()">+ Añadir Grupo</button>
+                    </div>
+                    <div id="groups-container"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal-gray" onclick="closeModal()">Cancelar</button>
+                <button class="btn-modal-blue" onclick="saveCourse()">Guardar</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

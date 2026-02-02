@@ -1,0 +1,46 @@
+body { font-family: 'Segoe UI', sans-serif; background-color: #121212; color: #e0e0e0; margin: 0; padding: 20px; }
+.container { max-width: 1400px; margin: auto; }
+
+/* Botones Principales */
+.header-main { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 20px; }
+.btn-action { padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; color: white; }
+.btn-gray { background: #444; }
+.btn-green { background: #28a745; }
+.btn-blue { background: #007bff; }
+.btn-red { background: #dc3545; }
+
+/* Grid de 3 Columnas */
+.lista-cursos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+
+/* Tarjeta Curso */
+.card-curso { 
+    background: #1e1e1e; border: 1px solid #333; padding: 15px; border-radius: 10px; 
+    border-left: 6px solid #ccc; position: relative; min-height: 140px;
+}
+.btn-editar-card { position: absolute; top: 12px; right: 12px; padding: 4px 10px; background: #444; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
+
+/* Lista Vertical de Horas */
+.time-badges-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.time-badge { font-size: 11px; background: #2a2a2a; padding: 4px 10px; border-radius: 5px; color: #4dabf7; width: fit-content; }
+
+/* MODAL CORREGIDO (CON SCROLL) */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 1000; }
+.modal-content { 
+    background: #1e1e1e; width: 580px; margin: 30px auto; padding: 0; 
+    border-radius: 12px; color: white; overflow: hidden; display: flex; flex-direction: column; max-height: 90vh;
+}
+.modal-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; }
+.modal-scroll-area { padding: 20px; overflow-y: auto; flex: 1; } /* AQUÍ SE ACTIVA EL SCROLL */
+.modal-footer { padding: 15px 20px; border-top: 1px solid #333; display: flex; justify-content: flex-end; gap: 10px; }
+
+.groups-title-row { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
+.group-section { background: #2a2a2a; padding: 15px; border-radius: 8px; margin-top: 10px; border: 1px dashed #444; position: relative; }
+.btn-del-group { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; border-radius: 4px; width: 22px; height: 22px; cursor: pointer; font-weight: bold; }
+
+/* Página 2 y Tabla */
+.header-schedule-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.btn-nav-left, .btn-excel, .btn-download-png { background: #444; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+.schedule-paper { background: white; padding: 25px; border-radius: 8px; color: #333; }
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+td { border: 1px solid #ddd; text-align: center; height: 48px; font-size: 11px; padding: 0 !important; }
+.bloque-clase { width: 96%; height: 92%; margin: auto; border-radius: 4px; border: 1px solid; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-direction: column; }
